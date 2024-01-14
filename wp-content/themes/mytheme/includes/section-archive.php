@@ -2,12 +2,13 @@
 
 
 <div class="card mb-3">
+    
 
     <div class="card-body d-flex justify-content-center align-items-center">
 
         <?php if(has_post_thumbnail()):?>
 
-            <img src="<?php the_post_thumbnail_url('blog-small'); ?>" alt="<?php the_title(); ?>" class="img-fluid img-thumbnail mb-3 mr-4">
+            <img src="<?php the_post_thumbnail_url('blog-small'); ?>" alt="<?php the_title(); ?>" class="img-fluid img-thumbnail mb-3">
 
         <?php endif;?>
 
