@@ -200,3 +200,11 @@ function my_shortcode()
 }
 
 add_shortcode('latest_cars', 'my_shortcode');
+
+
+
+function my_phone()
+{
+    return '0400 200 222';
+}
+add_shortcode('phone', 'my_phone');
