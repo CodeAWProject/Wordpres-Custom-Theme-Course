@@ -22,6 +22,8 @@
 
         <div class="col-lg-6">
 
+        <?php get_template_part('includes/form', 'enquiry'); ?>
+
             <ul>
                 <li>
                     Color: <?php the_field('color'); ?>
@@ -53,7 +55,7 @@
                 <?php endif; ?>
             </ul>
 
-            <ul>
+            <!-- <ul>
             <?php if(have_rows('gallery')):?>
                     <?php while(have_rows('gallery')): the_row();
                     $image1 = get_sub_field('image1');
@@ -68,7 +70,7 @@
                     <?php endwhile; ?>
 
                 <?php endif; ?>
-            </ul>
+            </ul> -->
 
         </div>
     </div>
