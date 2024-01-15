@@ -40,7 +40,14 @@ $brands = get_terms([
 
                         <option value="">Choose a brand</option>
                             <?php foreach($brands as $brand): ?>
-                                <option value="<?php echo $brand->slug; ?>"><?php echo $brand->name; ?></option>
+                                <!-- If the brand name was found in url and the brand name equals the slug in this loop then selected-->
+                                <option      
+                                
+                                <?php if(  isset($_GET['brand']) && ($_GET['brand'] == $brand->slug) ):?>
+                                    selected
+                                <?php endif; ?>    
+                                
+                                value="<?php echo $brand->slug; ?>"><?php echo $brand->name; ?></option>
                             <?php endforeach;?>    
                         </select>
                     </div>
@@ -50,6 +57,53 @@ $brands = get_terms([
 
                 </form>
 
+
+                <?php 
+
+                $args = [
+                    'post_type' => 'cars',
+                    'post_per_page' => 0,
+                    'tax_query' => [],
+                    'meta_query' => [
+                        'relation' => 'AND',
+                    ],
+
+                ];
+
+                if( isset($_GET['keyword']))
+                {
+                    if(!empty($_GET['keyword']))
+                    {
+
+                        // Search the content of that specific post
+                        $args['s'] = $_GET['keyword'];
+                    }
+                }
+
+                $query = new WP_Query($args);
+
+                ?>
+                
+
+                <!-- If there are results -->
+                <?php if( $query->have_posts() ) :?>
+
+                    <?php while( $query->have_posts() ) : $query->the_post();?>
+
+                        <img src="<?php the_post_thumbnail_url('blog-large'); ?>" alt="<?php the_title(); ?>" class="img-fluid mb-3 img-thumbnail">
+
+                        <h3><?php the_title(); ?></h3>
+
+                    <?php endwhile;?>    
+
+                <?php else:?>
+
+                    <div class="clearfix mb-3"></div>
+
+                <div class="alert alert-danger">There are no results  </div>    
+                  
+
+                <?php endif; ?>    
             </div>    
         </div>
 
