@@ -88,7 +88,7 @@ function my_first_post_type()
         'public' => true,
         'menu_icon' => 'dashicons-car',
         'has_archive' => true,
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail', 'custom-fields' ),
         // 'rewrite' => array('slug' => 'my-cars'),
     );
 
