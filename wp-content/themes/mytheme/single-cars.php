@@ -24,14 +24,13 @@
 
             <ul>
                 <li>
-                    Color: <?php echo get_post_meta($post->ID, 'Color', true); ?>
+                    Color: <?php the_field('color'); ?>
                 </li>
 
-                <?php if(get_post_meta($post->ID, 'Registration', true)):?>
                 <li>
-                    Registration: <?php echo get_post_meta($post->ID, 'Registration', true); ?>
+                    Registration: <?php the_field('registration'); ?>
                 </li>
-                <?php endif;?>
+                
             </ul>
 
         </div>
