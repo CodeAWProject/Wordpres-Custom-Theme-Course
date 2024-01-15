@@ -180,3 +180,23 @@ function register_navwalker(){
 	require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 }
 add_action( 'after_setup_theme', 'register_navwalker' );
+
+
+// add_action('phpmailer_init', 'custom_mailer');
+// function custom_mailer( PHPMailer $phpmailer)
+// {
+
+//     $phpmailer->SetFrom('activityware@gmail.com', 'John Smith');
+//     $phpmailer->Host = ''
+
+// }
+
+function my_shortcode()
+{
+    // Returning properly on the page
+    ob_start();
+    get_template_part('includes/latest', 'cars');
+    return ob_get_clean();
+}
+
+add_shortcode('latest_cars', 'my_shortcode');
