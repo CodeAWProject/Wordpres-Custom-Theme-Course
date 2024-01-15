@@ -25,7 +25,12 @@ $brands = get_terms([
 
                     <div class="form-group">               
                         <label for="kayword">Type a kayword</label>
-                        <input type="text" name="keyword" placeholder="Type a keyword" class="form-control">
+                        <input type="text" 
+                        name="keyword" 
+                        placeholder="Type a keyword" 
+                        class="form-control"
+                        value="<?php echo isset($_GET['keyword']) ? $_GET['keyword'] : '';?>"
+                        >
                     </div>
 
                     <div class="form-group">
