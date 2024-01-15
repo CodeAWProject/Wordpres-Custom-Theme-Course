@@ -1,6 +1,10 @@
+<div id="success_message" class="alert alert-success" style="display: none"></div>
+
 <form id="enquiry">
 
 <h2>Send an enquiry about <?php the_title(); ?></h2>
+
+
 
     <div class="form-group row">
         <div class="col-lg-6">
@@ -60,7 +64,16 @@
                 contentType: false,
 
                 success: function(res) {
-                    alert(res.data);
+
+                    $('#enquiry').fadeOut(200);
+
+                    $('#success_message').text('Thanks for your enquiry').show();
+
+                    $('#enquiry').trigger('reset');
+
+                    $('#enquiry').fadeIn(5000);
+
+
                 },
 
                 error: function(err)
