@@ -1,4 +1,4 @@
-<form>
+<form id="enquiry">
 
 <h2>Send an enquiry about <?php the_title(); ?></h2>
 
@@ -31,3 +31,49 @@
     </div>
 
 </form>
+
+<script>
+
+    (function($){
+
+        $('#enquiry').submit( function(event) {
+
+            event.preventDefault();
+
+            var endpoint = '<?php echo admin_url('admin-ajax.php');?>';
+
+
+            var form = $('#enquiry').serialize();
+
+            console.log(form);
+
+            var formdata = new FormData;
+
+            formdata.append('action', 'enquiry');
+            formdata.append('enquiry', form);
+
+            $.ajax(endpoint, {
+
+                type: 'POST',
+                data:formdata,
+                processData: false,
+                contentType: false,
+
+                success: function(res) {
+                    alert(res.data);
+                },
+
+                error: function(err)
+                {
+
+                }
+
+            })
+    
+        })
+
+    })(jQuery)
+
+    
+
+</script>
