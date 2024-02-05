@@ -13,3 +13,11 @@ if(!defined('ABSPATH'))
 {
     die('You cannot be here');
 }
+
+if(!class_exists('ContactPlugin')){
+    class ContactPlugin {
+        
+    }
+
+    new ContactPlugin;
+}
