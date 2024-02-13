@@ -17,6 +17,20 @@ function create_rest_endpoint()
     ));
 }
 
-function handle_enquiry() {
-echo 'Hello';
+function handle_enquiry($data) {
+
+
+    //Retrieving all parameters that were posted with the form
+    $params = $data->get_params();
+
+    if(!wp_verify_nonce($params['_wpnonce'], 'wp_rest')) 
+    {
+        return new WP_Rest_Response('Message not sent', 422);
+    }
+
+    unset($params['_wpnonce']);
+    unset($params['_wp_http_referer']);
+
+
+    
 }
